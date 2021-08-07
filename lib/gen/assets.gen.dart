@@ -12,7 +12,9 @@ class $AssetsImagesGen {
   String get gauge => 'assets/images/Gauge.svg';
   String get del => 'assets/images/del.svg';
   String get diagram => 'assets/images/diagram.svg';
-  String get illustration => 'assets/images/illustration.svg';
+  AssetGenImage get illustrationPng =>
+      const AssetGenImage('assets/images/illustration.png');
+  String get illustrationSvg => 'assets/images/illustration.svg';
   String get logo => 'assets/images/logo.svg';
   String get shape => 'assets/images/shape.svg';
   String get tools => 'assets/images/tools.svg';
