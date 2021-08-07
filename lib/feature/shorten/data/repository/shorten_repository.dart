@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
 import 'package:shortly/data/network/response/shorten_response.dart';
 import 'package:shortly/data/result.dart';
-import 'package:shortly/feature/shorten/data/model/short_url.dart';
+import 'package:shortly/data/model/short_url.dart';
 import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.dart';
 
 abstract class ShortenRepository {

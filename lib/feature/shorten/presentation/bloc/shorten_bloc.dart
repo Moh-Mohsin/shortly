@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shortly/data/result.dart';
-import 'package:shortly/feature/shorten/data/model/short_url.dart';
+import 'package:shortly/data/model/short_url.dart';
 import 'package:shortly/feature/shorten/domain/usecase/shorten_url_use_case.dart';
 
 part 'shorten_event.dart';
