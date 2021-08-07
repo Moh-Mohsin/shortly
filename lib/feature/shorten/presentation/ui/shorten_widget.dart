@@ -21,7 +21,7 @@ class _ShortenWidgetState extends State<ShortenWidget> {
   void initState() {
     _shortenBloc = BlocProvider.of<ShortenBloc>(context);
     _controller = TextEditingController();
-    _shortenBloc.stream.listen((event) {
+    _shortenBloc.stream.listen((event) { //TODO: dispose this
       if(event is ShortenSuccess){
         print("####################### ShortenSuccess");
         print(event.shortUrl.originalLink);

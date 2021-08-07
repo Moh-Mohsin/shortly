@@ -6,8 +6,9 @@ import 'di/injection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Env.prod);
-  runApp(MyApp());
+  configureDependencies(Env.prod).then((value){
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

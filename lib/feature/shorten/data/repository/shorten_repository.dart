@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shortly/data/db/database.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
 import 'package:shortly/data/network/response/shorten_response.dart';
 import 'package:shortly/data/result.dart';
@@ -13,14 +14,18 @@ abstract class ShortenRepository {
 @Singleton(as: ShortenRepository)
 class ShortenRepositoryImpl extends ShortenRepository {
   final ShortenRemoteDataSource shortenRemoteDataSource;
+  final AppDatabase appDatabase;
 
-  ShortenRepositoryImpl(this.shortenRemoteDataSource);
+  ShortenRepositoryImpl(this.shortenRemoteDataSource, this.appDatabase);
 
   @override
   Future<Result<ShortUrl>> shortenUrl(String url) async {
     try {
       final response = await shortenRemoteDataSource.shortenUrl(url);
-      return Success(response.result.mapToShortUrl());
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      final shortUrl = response.result.mapToShortUrl(timestamp);
+      appDatabase.shortUrlDao.insertPerson(shortUrl);
+      return Success(shortUrl);
     } catch (e){
       return Error<ShortUrl>(ServerException());
     }
