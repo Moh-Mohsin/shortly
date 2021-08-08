@@ -13,21 +13,34 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Material(
-        child: Container(
-          color: ShortyColors.backgroundOffWhite,
-          child: Column(
+    // final padding = MediaQuery.of(context).padding;
+    final height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      // resizeToAvoidBottomInset: true,
+      body: Container(
+        color: ShortyColors.backgroundOffWhite,
+        child: SingleChildScrollView(
+          child: Stack(
+            // alignment: AlignmentDirectional.bottomCenter,
             children: [
-              Expanded(
+              SizedBox(
+                height: height,
+                width: double.infinity,
                 child: BlocProvider.value(
                   value: getIt<ShortUrlHistoryBloc>(),
                   child: ShortUrlHistoryWidget(),
                 ),
               ),
-              BlocProvider.value(
-                value: getIt<ShortenBloc>(),
-                child: ShortenWidget(),
+              Positioned(
+                bottom: 0.0,
+                left: 0.0,
+                right: 0.0,
+                child: BlocProvider.value(
+                  value: getIt<ShortenBloc>(),
+                  child: SizedBox(
+                    height: 200,
+                      child: ShortenWidget()),
+                ),
               ),
             ],
           ),
