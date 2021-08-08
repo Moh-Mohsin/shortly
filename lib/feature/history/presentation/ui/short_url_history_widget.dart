@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,16 +18,21 @@ class ShortUrlHistoryWidget extends StatefulWidget {
 class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
   ShortUrlHistoryBloc _shortUrlHistoryBloc;
   List<ShortUrl> shortUrls;
-
+  StreamSubscription streamSubscription;
   @override
   void initState() {
     _shortUrlHistoryBloc = BlocProvider.of<ShortUrlHistoryBloc>(context);
-    _shortUrlHistoryBloc.getHistoryListStream().listen((event) {
+    streamSubscription = _shortUrlHistoryBloc.getHistoryListStream().listen((event) {
       setState(() {
         shortUrls = event;
       });
     });
     super.initState();
+  }
+  @override
+  void dispose() {
+    streamSubscription.cancel();
+    super.dispose();
   }
 
   @override
@@ -53,7 +60,7 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
 Widget _buildEmptyListWidget(BuildContext context) {
   return Column(
     children: [
-      SizedBox(height: 30.0),
+      SizedBox(height: 80.0),
       SvgPicture.asset(Assets.images.logo),
       SizedBox(height: 30.0),
       Image(image: Assets.images.illustrationPng),
