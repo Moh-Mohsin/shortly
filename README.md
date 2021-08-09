@@ -30,9 +30,14 @@ The app is built with BloC and divided by feature. The layers in each feature fr
 * Floor - for local database storage.
 * Bloc - for state management.
 * GetIt and Injectable - for DI.
+* Unit Tests with Flutter Test and Mockito
 
 ------ 
 
 ### Run the app
 
 make sure you are using Flutter 2.0.5 SDK (or prior to 2.2.0) and run the command `flutter run`
+
+### Run the tests
+
+`flutter test`

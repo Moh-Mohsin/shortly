@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shortly/feature/main_screen.dart';
@@ -11,13 +12,17 @@ import 'di/injection.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Env.prod).then((value) {
-    runApp(MyApp());
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((v) {
+    configureDependencies(Env.prod).then((value) {
+      runApp(MyApp());
+    });
   });
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     IsBenefitsSkippedUseCase isBenefitsSkippedUseCase =
@@ -25,6 +30,7 @@ class MyApp extends StatelessWidget {
     bool isBenefitsSkipped = isBenefitsSkippedUseCase();
     return MaterialApp(
       title: 'Shorty',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.cyan,
         textTheme: GoogleFonts.poppinsTextTheme(
