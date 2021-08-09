@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:shortly/data/model/short_url.dart';
 import 'package:shortly/feature/history/presentation/bloc/short_url_history_bloc.dart';
 import 'package:shortly/feature/history/presentation/ui/short_url_item.dart';
 import 'package:shortly/gen/assets.gen.dart';
+import 'package:shortly/util/shorty_colors.dart';
 
 class ShortUrlHistoryWidget extends StatefulWidget {
   @override
@@ -40,13 +40,43 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
     if (shortUrls == null) {
       return Container();
     }
-    return shortUrls.isEmpty
-        ? _buildEmptyListWidget(context)
-        : ListView.builder(
-            itemCount: shortUrls.length,
-            itemBuilder: (context, index) =>
-                _buildListItem(index, shortUrls ?? []),
-          );
+    return Stack(
+      children: [
+        shortUrls.isEmpty
+            ? _buildEmptyListWidget(context)
+            : ListView.builder(
+                itemCount: shortUrls.length,
+                itemBuilder: (context, index) =>
+                    _buildListItem(index, shortUrls ?? []),
+              ),
+        Positioned(
+          bottom: 0.0,
+          left: 0.0,
+          right: 0.0,
+          child: Column(
+            children: [
+              Container(
+                height: 20,
+                // color: ShortyColors.backgroundOffWhite,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                  colors: [
+                    ShortyColors.backgroundOffWhiteTransparent,
+                    ShortyColors.backgroundOffWhite
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                )),
+              ),
+              Container(
+                height: 20,
+                color: ShortyColors.backgroundOffWhite,
+              ),
+            ],
+          ),
+        )
+      ],
+    );
   }
 
   Widget _buildListItem(int index, List<ShortUrl> shortUrls) {
