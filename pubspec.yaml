@@ -32,8 +32,9 @@ dependencies:
   pretty_dio_logger: ^1.1.1
   json_serializable: ^3.5.0
 
-  # DB
+  # Local
   floor: ^0.19.1
+  shared_preferences: ^0.5.12+4
 
   # DI
   get_it:
@@ -43,6 +44,7 @@ dependencies:
   fluttertoast: ^8.0.8
   flutter_svg:
   google_fonts: ^1.1.2
+  page_view_indicators: ^1.4.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
