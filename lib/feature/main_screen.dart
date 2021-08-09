@@ -18,12 +18,10 @@ class MainScreen extends StatelessWidget {
     // final padding = MediaQuery.of(context).padding;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
-      // resizeToAvoidBottomInset: true,
       body: Container(
         color: ShortyColors.backgroundOffWhite,
         child: SingleChildScrollView(
           child: Stack(
-            // alignment: AlignmentDirectional.bottomCenter,
             children: [
               Container(
                 height: height,

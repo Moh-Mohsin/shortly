@@ -6,8 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shortly/data/model/short_url.dart';
-import 'package:shortly/gen/assets.gen.dart';
 import 'package:shortly/feature/history/presentation/bloc/short_url_history_bloc.dart';
+import 'package:shortly/gen/assets.gen.dart';
 import 'package:shortly/util/shorty_colors.dart';
 
 class ShortUrlItem extends StatefulWidget {
@@ -86,7 +86,7 @@ class _ShortUrlItemState extends State<ShortUrlItem> {
                   style: ElevatedButton.styleFrom(
                     primary: _copied
                         ? ShortyColors.primaryDarkViolet
-                        : ShortyColors.primaryCyan, // This is what you need!
+                        : ShortyColors.primaryCyan,
                   ),
                   onPressed: () => _copyShortUrlToClipboard(widget.shortUrl),
                   child: Text(

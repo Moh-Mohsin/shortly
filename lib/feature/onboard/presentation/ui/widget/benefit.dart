@@ -13,9 +13,9 @@ class Benefit {
         "Brand Recognition",
         "Boost your brand recognition\n"
             "with each click. Generic links\n"
-            "don't mean a thin. Branded\n"
+            "don't mean a thing. Branded\n"
             "links help instil confidence in\n"
-            " your content",
+            " your content.",
         Assets.images.diagram,
       ),
       Benefit(
@@ -33,7 +33,7 @@ class Benefit {
             "content discoverability through\n"
             "customizable links,\n"
             "supercharging audience\n"
-            "engagement",
+            "engagement.",
         Assets.images.tools,
       ),
     ];

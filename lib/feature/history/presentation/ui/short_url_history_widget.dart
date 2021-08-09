@@ -50,30 +50,33 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
                     ? Center(child: Text('Your Link History'))
                     : _buildListItem(index - 1, shortUrls ?? []),
               ),
-        Positioned(
-          bottom: 0.0,
-          left: 0.0,
-          right: 0.0,
-          child: Column(
-            children: [
-              Container(
-                height: 20,
-                // color: ShortyColors.backgroundOffWhite,
-                decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                  colors: [
-                    ShortyColors.backgroundOffWhiteTransparent,
-                    ShortyColors.backgroundOffWhite
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                )),
-              ),
-              Container(
-                height: 20,
-                color: ShortyColors.backgroundOffWhite,
-              ),
-            ],
+        Visibility(
+          visible: shortUrls.isNotEmpty,
+          child: Positioned(
+            bottom: 0.0,
+            left: 0.0,
+            right: 0.0,
+            child: Column(
+              children: [
+                Container(
+                  height: 20,
+                  // color: ShortyColors.backgroundOffWhite,
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                    colors: [
+                      ShortyColors.backgroundOffWhiteTransparent,
+                      ShortyColors.backgroundOffWhite
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  )),
+                ),
+                Container(
+                  height: 20,
+                  color: ShortyColors.backgroundOffWhite,
+                ),
+              ],
+            ),
           ),
         )
       ],

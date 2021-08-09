@@ -93,35 +93,30 @@ class _ShortenWidgetState extends State<ShortenWidget> {
   }
 
   Widget _buildTextField(BuildContext context, String label, bool isError) {
-    return BlocBuilder<ShortenBloc, ShortenState>(
-      builder: (context, state) {
-        return Theme(
-          data: Theme.of(context).copyWith(
-              primaryColor: isError ? Colors.red : ShortyColors.primaryCyan),
-          child: TextField(
-            key: const Key(ShortenWidgetKeys.URL_TEXT_FIELD_KEY),
-            controller: _controller,
-            autofocus: isError,
-            onSubmitted: (String value) {
-              _shortenBloc.shortenUrl(value);
-            },
-            // selectionHeightStyle: BoxHeightStyle.tight,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              height: .8,
-            ),
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                hintStyle:
+    return Theme(
+      data: Theme.of(context).copyWith(
+          primaryColor: isError ? Colors.red : ShortyColors.primaryCyan),
+      child: TextField(
+        key: const Key(ShortenWidgetKeys.URL_TEXT_FIELD_KEY),
+        controller: _controller,
+        autofocus: isError,
+        onSubmitted: (String value) {
+          _shortenBloc.shortenUrl(value);
+        },
+        // selectionHeightStyle: BoxHeightStyle.tight,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          height: .8,
+        ),
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            hintStyle:
                 TextStyle(height: .8, color: isError ? Colors.red : null),
-                hintText: isError
-                    ? 'Please add a link here'
-                    : 'Shorten a link here ...',
-                fillColor: Colors.white,
-                filled: true),
-          ),
-        );
-      },
+            hintText:
+                isError ? 'Please add a link here' : 'Shorten a link here ...',
+            fillColor: Colors.white,
+            filled: true),
+      ),
     );
   }
 
@@ -131,6 +126,9 @@ class _ShortenWidgetState extends State<ShortenWidget> {
       child: SizedBox(
         height: 50.0,
         child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: ShortyColors.primaryCyan,
+          ),
           key: const Key(ShortenWidgetKeys.SHORTEN_IT_BUTTON_KEY),
           child: Text(
             "SHORTEN IT!",

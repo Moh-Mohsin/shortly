@@ -22,7 +22,7 @@ class StartScreen extends StatelessWidget {
               SizedBox(height: 30.0),
               Image(image: Assets.images.illustrationPng),
               Text(
-                "More Than just\nShorter link",
+                "More Than just\nShorter links",
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
@@ -33,10 +33,9 @@ class StartScreen extends StatelessWidget {
               Text(
                 "Build your brand's recognition and\nget detailed insights on how your\nlinks are performing.",
                 textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .subtitle1
-                    .copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+                style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
               SizedBox(height: 30.0),
               Container(
