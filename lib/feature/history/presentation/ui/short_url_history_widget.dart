@@ -45,9 +45,10 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
         shortUrls.isEmpty
             ? _buildEmptyListWidget(context)
             : ListView.builder(
-                itemCount: shortUrls.length,
-                itemBuilder: (context, index) =>
-                    _buildListItem(index, shortUrls ?? []),
+                itemCount: shortUrls.length + 1,
+                itemBuilder: (context, index) => index == 0
+                    ? Center(child: Text('Your Link History'))
+                    : _buildListItem(index - 1, shortUrls ?? []),
               ),
         Positioned(
           bottom: 0.0,

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
@@ -21,13 +22,13 @@ class ShortenWidget extends StatefulWidget {
 class _ShortenWidgetState extends State<ShortenWidget> {
   ShortenBloc _shortenBloc;
   TextEditingController _controller;
+  StreamSubscription _streamSubscription;
 
   @override
   void initState() {
     _shortenBloc = BlocProvider.of<ShortenBloc>(context);
     _controller = TextEditingController();
-    _shortenBloc.stream.listen((event) {
-      //TODO: dispose this
+    _streamSubscription = _shortenBloc.stream.listen((event) {
       if (event is ShortenSuccess) {
         print("####################### ShortenSuccess");
         print(event.shortUrl.originalLink);
@@ -43,6 +44,12 @@ class _ShortenWidgetState extends State<ShortenWidget> {
   }
 
   @override
+  void dispose() {
+    _streamSubscription.cancel();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Stack(
       alignment: AlignmentDirectional.topEnd,
@@ -51,7 +58,7 @@ class _ShortenWidgetState extends State<ShortenWidget> {
             child: Container(
           color: ShortyColors.primaryDarkViolet,
         )),
-        SvgPicture.asset(Assets.images.shape, color: ShortyColors.primaryCyan),
+        SvgPicture.asset(Assets.images.shape, color: ShortyColors.lightViolet),
         Container(
           padding: EdgeInsets.all(30.0),
           child:
@@ -106,7 +113,7 @@ class _ShortenWidgetState extends State<ShortenWidget> {
             decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintStyle:
-                    TextStyle(height: .8, color: isError ? Colors.red : null),
+                TextStyle(height: .8, color: isError ? Colors.red : null),
                 hintText: isError
                     ? 'Please add a link here'
                     : 'Shorten a link here ...',

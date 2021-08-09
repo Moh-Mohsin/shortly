@@ -25,15 +25,13 @@ class MainScreen extends StatelessWidget {
           child: Stack(
             // alignment: AlignmentDirectional.bottomCenter,
             children: [
-              Padding(
+              Container(
+                height: height,
+                width: double.infinity,
                 padding: const EdgeInsets.only(bottom: 200.0),
-                child: SizedBox(
-                  height: height,
-                  width: double.infinity,
-                  child: BlocProvider.value(
-                    value: shortUrlHistoryBloc,
-                    child: ShortUrlHistoryWidget(),
-                  ),
+                child: BlocProvider.value(
+                  value: shortUrlHistoryBloc,
+                  child: ShortUrlHistoryWidget(),
                 ),
               ),
               Positioned(
