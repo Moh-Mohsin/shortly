@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shortly/data/db/database.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
-import 'package:shortly/data/network/response/shorten_response.dart';
-import 'package:shortly/data/result.dart';
 import 'package:shortly/data/model/short_url.dart';
+import 'package:shortly/data/result.dart';
 import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.dart';
 
 abstract class ShortenRepository {
@@ -26,8 +24,8 @@ class ShortenRepositoryImpl extends ShortenRepository {
       final shortUrl = response.result.mapToShortUrl(timestamp);
       appDatabase.shortUrlDao.insertPerson(shortUrl);
       return Success(shortUrl);
-    } catch (e){
-      return Error<ShortUrl>(ServerException());
+    } on AppException catch (e) {
+      return Error<ShortUrl>(e);
     }
   }
 

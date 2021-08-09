@@ -16,6 +16,7 @@ class ShortenSuccess extends ShortenState {
 }
 class ShortenFailure extends ShortenState {
  final String msg;
+  final AppException appException;
 
-  ShortenFailure(this.msg);
+  ShortenFailure(this.msg, this.appException);
 }

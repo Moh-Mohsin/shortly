@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:shortly/data/exceptions/exceptions.dart';
 import 'package:shortly/feature/shorten/presentation/bloc/shorten_bloc.dart';
 import 'package:shortly/gen/assets.gen.dart';
 import 'package:shortly/util/shorty_colors.dart';
@@ -28,16 +29,19 @@ class _ShortenWidgetState extends State<ShortenWidget> {
   void initState() {
     _shortenBloc = BlocProvider.of<ShortenBloc>(context);
     _controller = TextEditingController();
-    _streamSubscription = _shortenBloc.stream.listen((event) {
-      if (event is ShortenSuccess) {
+    _streamSubscription = _shortenBloc.stream.listen((state) {
+      if (state is ShortenSuccess) {
         print("####################### ShortenSuccess");
-        print(event.shortUrl.originalLink);
-        print(event.shortUrl.fullShortLink);
+        print(state.shortUrl.originalLink);
+        print(state.shortUrl.fullShortLink);
         Fluttertoast.showToast(
-            msg: "short url: ${event.shortUrl.fullShortLink}");
-      } else if (event is ShortenFailure) {
+            msg: "short url: ${state.shortUrl.fullShortLink}");
+
+        _controller.text = "";
+      } else if (state is ShortenFailure) {
         print("####################### ShortenFailure");
-        print(event.msg);
+        Fluttertoast.showToast(msg: state.msg);
+        print(state.msg);
       }
     });
     super.initState();
@@ -65,7 +69,8 @@ class _ShortenWidgetState extends State<ShortenWidget> {
               BlocBuilder<ShortenBloc, ShortenState>(builder: (context, state) {
             String label = 'Shorten a link here';
             bool error = false;
-            if (state is ShortenFailure) {
+            if (state is ShortenFailure &&
+                state.appException is BadRequestException) {
               label = 'Please add a link here';
               error = true;
             }

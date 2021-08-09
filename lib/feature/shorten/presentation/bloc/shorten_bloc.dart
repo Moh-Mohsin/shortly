@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shortly/data/exceptions/exceptions.dart';
 import 'package:shortly/data/model/short_url.dart';
 import 'package:shortly/data/result.dart';
 import 'package:shortly/feature/shorten/domain/usecase/shorten_url_use_case.dart';
@@ -28,7 +29,7 @@ class ShortenBloc extends Bloc<ShortenEvent, ShortenState> {
       if(result is Success<ShortUrl>){
         yield ShortenSuccess(result.data);
       } else if(result is Error<ShortUrl>) {
-        yield ShortenFailure(result.appException.msg);
+        yield ShortenFailure(result.appException.msg, result.appException);
       } else {
         throw Exception("invalid result");
       }
