@@ -7,7 +7,7 @@ A URL shortening Flutter app.
 
 ### Features
 
-* On-boarding flow - first time users are greeted with a flow that shows them what they can expect
+* On-boarding flow - first-time users are greeted with a flow that shows them what they can expect
   from the app.
 * Shorten it - enter any valid web URL and get a short url that can be used instead.
 * Link History - see (or delete) your history of shortened links locally.
@@ -22,10 +22,10 @@ The app is built with BloC and divided by feature. The layers in each feature fr
 * Repositories - uses the appropriate data source and parses data to appropriate form.
 * Use Cases - mostly map to features and actions the app provides. good starting point to understand
   the code base.
-* BloC - consumes events and exposes a stream of states to the UI. responsible for state management.
+* BloC - consumes events and exposes a stream of states to the UI. responsible of State Management.
 * UI - whats visible to the user.
 
-### Tech
+### Tech Stack
 
 * Flutter 2.0.5 SDK.
 * Retrofit - for API calls.
