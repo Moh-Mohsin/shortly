@@ -143,7 +143,7 @@ class _$ShortUrlDao extends ShortUrlDao {
   }
 
   @override
-  Future<void> insertPerson(ShortUrl shortUrl) async {
+  Future<void> insertShortUrl(ShortUrl shortUrl) async {
     await _shortUrlInsertionAdapter.insert(
         shortUrl, OnConflictStrategy.replace);
   }

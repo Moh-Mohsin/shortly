@@ -22,7 +22,7 @@ class ShortenRepositoryImpl extends ShortenRepository {
       final response = await shortenRemoteDataSource.shortenUrl(url);
       final timestamp = DateTime.now().millisecondsSinceEpoch;
       final shortUrl = response.result.mapToShortUrl(timestamp);
-      appDatabase.shortUrlDao.insertPerson(shortUrl);
+      appDatabase.shortUrlDao.insertShortUrl(shortUrl);
       return Success(shortUrl);
     } on AppException catch (e) {
       return Error<ShortUrl>(e);

@@ -10,7 +10,7 @@ abstract class ShortUrlDao {
 
 
   @Insert(onConflict: OnConflictStrategy.replace)
-  Future<void> insertPerson(ShortUrl shortUrl);
+  Future<void> insertShortUrl(ShortUrl shortUrl);
 
   @delete
   Future<void> deleteShortUrl(ShortUrl shortUrl);

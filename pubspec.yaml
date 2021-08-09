@@ -63,6 +63,7 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   floor_generator: ^0.19.1
+  mockito: ^4.1.4
 
 dependency_overrides:
   analyzer: ^0.40.1
