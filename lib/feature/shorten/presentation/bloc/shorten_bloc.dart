@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shortly/data/result.dart';
 import 'package:shortly/data/model/short_url.dart';
+import 'package:shortly/data/result.dart';
 import 'package:shortly/feature/shorten/domain/usecase/shorten_url_use_case.dart';
 
 part 'shorten_event.dart';
@@ -37,5 +37,12 @@ class ShortenBloc extends Bloc<ShortenEvent, ShortenState> {
 
   shortenUrl(String url) {
     add(ShortenUrlEvent(url: url));
+  }
+
+  @override
+  void onTransition(Transition<ShortenEvent, ShortenState> transition) {
+    super.onTransition(transition);
+    print(
+        "transition from ${transition.currentState} to ${transition.nextState}");
   }
 }
