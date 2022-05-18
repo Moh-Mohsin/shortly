@@ -14,7 +14,7 @@ part 'shorten_state.dart';
 
 @injectable
 class ShortenBloc extends Bloc<ShortenEvent, ShortenState> {
-  final ShortenUrlUseCase _shortenUrlUseCase;
+  final ShortenUrlUseCase/*!*/ _shortenUrlUseCase;
   ShortenBloc(this._shortenUrlUseCase) : super(ShortenInitial());
 
   @override

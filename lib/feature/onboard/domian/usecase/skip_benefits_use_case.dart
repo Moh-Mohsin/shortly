@@ -3,7 +3,7 @@ import 'package:shortly/feature/onboard/domian/data/repository/benefits_reposito
 
 @injectable
 class SkipBenefitsUseCase {
-  final BenefitsRepository _benefitsRepository;
+  final BenefitsRepository/*!*/ _benefitsRepository;
 
   SkipBenefitsUseCase(this._benefitsRepository);
 

@@ -12,7 +12,7 @@ abstract class ShortenRemoteDataSource {
 
 @Singleton(as: ShortenRemoteDataSource)
 class ShortenRemoteDataSourceImpl extends ShortenRemoteDataSource {
-  final ShrtcodeApiService shrtcodeApiService;
+  final ShrtcodeApiService/*!*/ shrtcodeApiService;
 
   ShortenRemoteDataSourceImpl(this.shrtcodeApiService);
 

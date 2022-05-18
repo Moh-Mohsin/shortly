@@ -15,8 +15,8 @@ part 'short_url_history_event.dart';
 @injectable
 class ShortUrlHistoryBloc
     extends Bloc<ShortUrlHistoryEvent, ShortUrlHistoryState> {
-  final GetShortUrlHistoryUseCase _getShortUrlHistoryUseCase;
-  final DeleteShortUrlUseCase _deleteShortUrlUseCase;
+  final GetShortUrlHistoryUseCase/*!*/ _getShortUrlHistoryUseCase;
+  final DeleteShortUrlUseCase/*!*/ _deleteShortUrlUseCase;
 
   ShortUrlHistoryBloc(
       this._getShortUrlHistoryUseCase, this._deleteShortUrlUseCase)
@@ -39,7 +39,7 @@ class ShortUrlHistoryBloc
     add(DeleteShortUrlEvent(shortUrl));
   }
 
-  Stream<List<ShortUrl>> getHistoryListStream(){
+  Stream<List<ShortUrl>>/*!*/ getHistoryListStream(){
     return _getShortUrlHistoryUseCase();
   }
 }
