@@ -45,7 +45,7 @@ void main() {
       //given
       when(mockShrtcodeApiService.shorten(url: link)).thenAnswer((_) async =>
           throw DioError(
-              type: DioErrorType.RESPONSE,
+              type: DioErrorType.response,
               response: Response(
                   data: Dummy.getShortenRawErrorResponse(link),
                   statusCode: 400)));

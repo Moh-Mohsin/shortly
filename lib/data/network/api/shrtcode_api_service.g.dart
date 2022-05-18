@@ -25,11 +25,10 @@ class _ShrtcodeApiService implements ShrtcodeApiService {
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>('/shorten',
         queryParameters: queryParameters,
-        options: RequestOptions(
+        options: Options(
             method: 'GET',
             headers: <String, dynamic>{},
-            extra: _extra,
-            baseUrl: baseUrl),
+            extra: _extra,),
         data: _data);
     final value = ShortenResponse.fromJson(_result.data);
     final httpResponse = HttpResponse(value, _result);
