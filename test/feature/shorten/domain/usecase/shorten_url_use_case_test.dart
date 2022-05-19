@@ -10,8 +10,8 @@ import '../../../../dummy.dart';
 class MockShortenRepository extends Mock implements ShortenRepository {}
 
 void main() {
-  ShortenUrlUseCase shortenUrlUseCase;
-  MockShortenRepository mockShortenRepository;
+  late ShortenUrlUseCase shortenUrlUseCase;
+  late MockShortenRepository mockShortenRepository;
   setUp(() {
     mockShortenRepository = MockShortenRepository();
     shortenUrlUseCase = ShortenUrlUseCase(mockShortenRepository);

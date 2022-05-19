@@ -14,16 +14,16 @@ import 'package:shortly/util/shorty_colors.dart';
 import 'keys/shorten_widget_keys.dart';
 
 class ShortenWidget extends StatefulWidget {
-  const ShortenWidget({Key key}) : super(key: key);
+  const ShortenWidget({Key? key}) : super(key: key);
 
   @override
   _ShortenWidgetState createState() => _ShortenWidgetState();
 }
 
 class _ShortenWidgetState extends State<ShortenWidget> {
-  ShortenBloc _shortenBloc;
-  TextEditingController _controller;
-  StreamSubscription _streamSubscription;
+  late ShortenBloc _shortenBloc;
+  TextEditingController? _controller;
+  late StreamSubscription _streamSubscription;
 
   @override
   void initState() {
@@ -37,10 +37,10 @@ class _ShortenWidgetState extends State<ShortenWidget> {
         Fluttertoast.showToast(
             msg: "short url: ${state.shortUrl.fullShortLink}");
 
-        _controller.text = "";
+        _controller!.text = "";
       } else if (state is ShortenFailure) {
         print("####################### ShortenFailure");
-        Fluttertoast.showToast(msg: state.msg);
+        Fluttertoast.showToast(msg: state.msg!);
         print(state.msg);
       }
     });
@@ -139,11 +139,11 @@ class _ShortenWidgetState extends State<ShortenWidget> {
             "SHORTEN IT!",
             style: Theme.of(context)
                 .textTheme
-                .headline6
+                .headline6!
                 .copyWith(fontWeight: FontWeight.w700, color: Colors.white),
           ),
           onPressed: () {
-            _shortenBloc.shortenUrl(_controller.text);
+            _shortenBloc.shortenUrl(_controller!.text);
           },
         ),
       ),

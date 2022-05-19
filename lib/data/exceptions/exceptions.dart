@@ -1,6 +1,6 @@
 /// Parent class for all the exceptions thrown by the App.
 abstract class AppException implements Exception {
-  final String msg;
+  final String? msg;
 
   AppException(this.msg);
 }
@@ -20,7 +20,7 @@ class NetworkException extends AppException {
 }
 
 class GeneralException extends AppException {
-  final String msg;
+  final String? msg;
 
   GeneralException(this.msg) : super(msg);
 }

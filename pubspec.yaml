@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
   # sdk: ">=2.12.0 <3.0.0" 
 
 dependencies:
@@ -32,6 +32,7 @@ dependencies:
   retrofit: ^3.0.1+1
   pretty_dio_logger: ^1.2.0-beta-1
   json_serializable: ^6.2.0
+  json_annotation: ^4.5.0
 
   # Local
   floor: ^1.2.0
@@ -65,9 +66,6 @@ dev_dependencies:
     sdk: flutter
   floor_generator: ^1.2.0
   mockito: ^5.2.0
-
-# dependency_overrides:
-#   analyzer: ^0.40.1
 
 flutter:
   uses-material-design: true

@@ -10,7 +10,7 @@ abstract class ShortUrlHistoryState extends Equatable {
 class ShortUrlHistoryInitial extends ShortUrlHistoryState {}
 class ShortUrlHistoryLoading extends ShortUrlHistoryState {}
 class ShortUrlHistorySuccess extends ShortUrlHistoryState {
-  final Stream<List<ShortUrl>> shortUrlStream;
+  final Stream<List<ShortUrl>>? shortUrlStream;
 
   ShortUrlHistorySuccess(this.shortUrlStream);
 }

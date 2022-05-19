@@ -26,14 +26,14 @@ class StartScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: Theme.of(context)
                     .textTheme
-                    .headline4
+                    .headline4!
                     .copyWith(fontWeight: FontWeight.w900, color: Colors.black),
               ),
               SizedBox(height: 10.0),
               Text(
                 "Build your brand's recognition and\nget detailed insights on how your\nlinks are performing.",
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.subtitle1.copyWith(
+                style: Theme.of(context).textTheme.subtitle1!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -48,7 +48,7 @@ class StartScreen extends StatelessWidget {
                   ),
                   child: Text(
                     'START',
-                    style: Theme.of(context).textTheme.headline6.copyWith(
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
                         fontWeight: FontWeight.w700, color: Colors.white),
                   ),
                   onPressed: () {

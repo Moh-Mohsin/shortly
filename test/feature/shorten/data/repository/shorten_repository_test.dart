@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shortly/data/db/dao/short_url_dao.dart';
 import 'package:shortly/data/db/database.dart';
@@ -9,19 +10,19 @@ import 'package:shortly/feature/shorten/data/repository/shorten_repository.dart'
 import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.dart';
 
 import '../../../../dummy.dart';
+import 'shorten_repository_test.mocks.dart';
 
 class MockShortenRemoteDataSource extends Mock
     implements ShortenRemoteDataSource {}
 
 class MockAppDatabase extends Mock implements AppDatabase {}
 
-class MockShortUrlDao extends Mock implements ShortUrlDao {}
-
+@GenerateMocks([ShortUrlDao])
 void main() {
-  MockShortenRemoteDataSource mockShortenRemoteDataSource;
-  MockAppDatabase mockAppDatabase;
-  MockShortUrlDao mockShortUrlDao;
-  ShortenRepositoryImpl shortenRepositoryImpl;
+  late MockShortenRemoteDataSource mockShortenRemoteDataSource;
+  late MockAppDatabase mockAppDatabase;
+  MockShortUrlDao? mockShortUrlDao;
+  late ShortenRepositoryImpl shortenRepositoryImpl;
   setUp(() {
     mockShortenRemoteDataSource = MockShortenRemoteDataSource();
     mockAppDatabase = MockAppDatabase();
@@ -40,8 +41,8 @@ void main() {
       //given
       when(mockShortenRemoteDataSource.shortenUrl(link))
           .thenAnswer((_) async => shortenResponse);
-      when(mockAppDatabase.shortUrlDao).thenAnswer((_) => mockShortUrlDao);
-      when(mockShortUrlDao.insertShortUrl(shortUrl)).thenAnswer((_) async {
+      when(mockAppDatabase.shortUrlDao).thenAnswer(((_) => mockShortUrlDao!));
+      when(mockShortUrlDao!.insertShortUrl(shortUrl)).thenAnswer((_) async {
         return;
       });
 
@@ -51,11 +52,11 @@ void main() {
 
       //then
       verify(mockShortenRemoteDataSource.shortenUrl(link));
-      verify(mockShortUrlDao.insertShortUrl(any));
+      verify(mockShortUrlDao!.insertShortUrl(argThat(isNotNull)));
       expect(result, isA<Success>());
       expect((result as Success<ShortUrl>).data.originalLink,
           equals(shortUrl.originalLink));
-      expect((result as Success<ShortUrl>).data.fullShortLink,
+      expect(result.data.fullShortLink,
           equals(shortUrl.fullShortLink));
     });
 
@@ -72,7 +73,7 @@ void main() {
 
       //then
       verify(mockShortenRemoteDataSource.shortenUrl(link));
-      verifyNever(mockShortUrlDao.insertShortUrl(any));
+      verifyNever(mockShortUrlDao!.insertShortUrl(any));
       expect(result, isA<Error>());
       expect((result as Error<ShortUrl>).appException, serverException);
     });

@@ -12,7 +12,7 @@ abstract class ShortenRemoteDataSource {
 
 @Singleton(as: ShortenRemoteDataSource)
 class ShortenRemoteDataSourceImpl extends ShortenRemoteDataSource {
-  final ShrtcodeApiService/*!*/ shrtcodeApiService;
+  final ShrtcodeApiService shrtcodeApiService;
 
   ShortenRemoteDataSourceImpl(this.shrtcodeApiService);
 
@@ -27,8 +27,8 @@ class ShortenRemoteDataSourceImpl extends ShortenRemoteDataSource {
       print(dioError.response);
       print(dioError.error);
       if (dioError.type == DioErrorType.response) {
-        final errorCode = dioError.response.statusCode;
-        final errorMessage = dioError.response.statusMessage;
+        final errorCode = dioError.response!.statusCode;
+        final errorMessage = dioError.response!.statusMessage;
         if (errorCode == 400) {
           throw BadRequestException();
         } else {

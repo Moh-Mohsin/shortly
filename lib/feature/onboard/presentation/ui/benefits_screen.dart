@@ -20,10 +20,10 @@ class BenefitsScreen extends StatefulWidget {
 }
 
 class _BenefitsScreenState extends State<BenefitsScreen> {
-  BenefitsBloc benefitsBloc;
-  StreamSubscription _streamSubscription;
+  late BenefitsBloc benefitsBloc;
+  late StreamSubscription _streamSubscription;
 
-  PageController _controller;
+  PageController? _controller;
   ValueNotifier<int> _currentPageNotifier = ValueNotifier<int>(0);
 
   @override
@@ -42,7 +42,7 @@ class _BenefitsScreenState extends State<BenefitsScreen> {
   void dispose() {
     _streamSubscription.cancel();
     _currentPageNotifier.dispose();
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 

@@ -10,7 +10,7 @@ abstract class BenefitsLocalDataSource {
 @Singleton(as: BenefitsLocalDataSource)
 class BenefitsLocalDataSourceImpl extends BenefitsLocalDataSource {
   static const _SKIPPED_KEY = "_SKIPPED_KEY";
-  final SharedPreferences/*!*/ sharedPreferences;
+  final SharedPreferences sharedPreferences;
 
   BenefitsLocalDataSourceImpl(this.sharedPreferences);
 

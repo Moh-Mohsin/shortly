@@ -10,5 +10,5 @@ abstract class ShrtcodeApiService {
  
   @GET("/shorten")
   Future<HttpResponse<ShortenResponse>> shorten(
-      {@required @Query("url") String url, });
+      {@Query("url") required String url, });
 }

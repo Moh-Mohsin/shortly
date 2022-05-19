@@ -15,31 +15,34 @@ part 'short_url_history_event.dart';
 @injectable
 class ShortUrlHistoryBloc
     extends Bloc<ShortUrlHistoryEvent, ShortUrlHistoryState> {
-  final GetShortUrlHistoryUseCase/*!*/ _getShortUrlHistoryUseCase;
-  final DeleteShortUrlUseCase/*!*/ _deleteShortUrlUseCase;
+  final GetShortUrlHistoryUseCase _getShortUrlHistoryUseCase;
+  final DeleteShortUrlUseCase _deleteShortUrlUseCase;
 
   ShortUrlHistoryBloc(
       this._getShortUrlHistoryUseCase, this._deleteShortUrlUseCase)
-      : super(ShortUrlHistoryInitial());
-
-  @override
-  Stream<ShortUrlHistoryState> mapEventToState(
-    ShortUrlHistoryEvent event,
-  ) async* {
-    if (event is LoadShortUrlHistoryEvent) {
-      // yield ShortUrlHistoryLoading();
-      final result = _getShortUrlHistoryUseCase();
-      yield ShortUrlHistorySuccess(result);
-    } else if (event is DeleteShortUrlEvent) {
-      _deleteShortUrlUseCase(event.shortUrl);
-    }
+      : super(ShortUrlHistoryInitial()) {
+    on<LoadShortUrlHistoryEvent>(_handleLoadShortUrlHistory);
+    on<DeleteShortUrlEvent>(_handleDeleteShortUrl);
   }
+
+
+  FutureOr<void> _handleLoadShortUrlHistory(LoadShortUrlHistoryEvent event, Emitter<ShortUrlHistoryState> emit) {
+
+      // yield ShortUrlHistoryLoading();
+      final Stream<List<ShortUrl>>? result = _getShortUrlHistoryUseCase();
+      emit(ShortUrlHistorySuccess(result));
+  }
+
+  FutureOr<void> _handleDeleteShortUrl(DeleteShortUrlEvent event, Emitter<ShortUrlHistoryState> emit) {
+      _deleteShortUrlUseCase(event.shortUrl);
+  }
+
 
   deleteShortUrl(ShortUrl shortUrl) {
     add(DeleteShortUrlEvent(shortUrl));
   }
 
-  Stream<List<ShortUrl>>/*!*/ getHistoryListStream(){
+  Stream<List<ShortUrl>> getHistoryListStream() {
     return _getShortUrlHistoryUseCase();
   }
 }

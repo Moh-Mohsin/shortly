@@ -9,7 +9,7 @@ abstract class BenefitsRepository {
 
 @Singleton(as: BenefitsRepository)
 class BenefitsRepositoryImpl extends BenefitsRepository {
-  final BenefitsLocalDataSource/*!*/ _benefitsLocalDataSource;
+  final BenefitsLocalDataSource _benefitsLocalDataSource;
 
   BenefitsRepositoryImpl(this._benefitsLocalDataSource);
 

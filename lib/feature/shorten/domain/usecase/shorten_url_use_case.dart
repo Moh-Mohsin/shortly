@@ -5,7 +5,7 @@ import 'package:shortly/feature/shorten/data/repository/shorten_repository.dart'
 
 @injectable
 class ShortenUrlUseCase {
-  final ShortenRepository/*!*/ shortenRepository;
+  final ShortenRepository shortenRepository;
 
   ShortenUrlUseCase(this.shortenRepository);
 

@@ -1,22 +1,38 @@
-// @dart = 2.10
 /// GENERATED CODE - DO NOT MODIFY BY HAND
 /// *****************************************************
 ///  FlutterGen
 /// *****************************************************
+
+// ignore_for_file: directives_ordering,unnecessary_import
 
 import 'package:flutter/widgets.dart';
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Gauge.svg
   String get gauge => 'assets/images/Gauge.svg';
+
+  /// File path: assets/images/del.svg
   String get del => 'assets/images/del.svg';
+
+  /// File path: assets/images/diagram.svg
   String get diagram => 'assets/images/diagram.svg';
+
+  /// File path: assets/images/illustration.png
   AssetGenImage get illustrationPng =>
       const AssetGenImage('assets/images/illustration.png');
+
+  /// File path: assets/images/illustration.svg
   String get illustrationSvg => 'assets/images/illustration.svg';
+
+  /// File path: assets/images/logo.svg
   String get logo => 'assets/images/logo.svg';
+
+  /// File path: assets/images/shape.svg
   String get shape => 'assets/images/shape.svg';
+
+  /// File path: assets/images/tools.svg
   String get tools => 'assets/images/tools.svg';
 }
 
@@ -27,26 +43,23 @@ class Assets {
 }
 
 class AssetGenImage extends AssetImage {
-  const AssetGenImage(String assetName)
-      : _assetName = assetName,
-        super(assetName);
-  final String _assetName;
+  const AssetGenImage(String assetName) : super(assetName);
 
   Image image({
-    Key key,
-    ImageFrameBuilder frameBuilder,
-    ImageLoadingBuilder loadingBuilder,
-    ImageErrorWidgetBuilder errorBuilder,
-    String semanticLabel,
+    Key? key,
+    ImageFrameBuilder? frameBuilder,
+    ImageLoadingBuilder? loadingBuilder,
+    ImageErrorWidgetBuilder? errorBuilder,
+    String? semanticLabel,
     bool excludeFromSemantics = false,
-    double width,
-    double height,
-    Color color,
-    BlendMode colorBlendMode,
-    BoxFit fit,
+    double? width,
+    double? height,
+    Color? color,
+    BlendMode? colorBlendMode,
+    BoxFit? fit,
     AlignmentGeometry alignment = Alignment.center,
     ImageRepeat repeat = ImageRepeat.noRepeat,
-    Rect centerSlice,
+    Rect? centerSlice,
     bool matchTextDirection = false,
     bool gaplessPlayback = false,
     bool isAntiAlias = false,
@@ -75,5 +88,5 @@ class AssetGenImage extends AssetImage {
     );
   }
 
-  String get path => _assetName;
+  String get path => assetName;
 }

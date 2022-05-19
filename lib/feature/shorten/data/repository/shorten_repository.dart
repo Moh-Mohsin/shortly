@@ -11,8 +11,8 @@ abstract class ShortenRepository {
 
 @Singleton(as: ShortenRepository)
 class ShortenRepositoryImpl extends ShortenRepository {
-  final ShortenRemoteDataSource/*!*/ shortenRemoteDataSource;
-  final AppDatabase/*!*/ appDatabase;
+  final ShortenRemoteDataSource shortenRemoteDataSource;
+  final AppDatabase appDatabase;
 
   ShortenRepositoryImpl(this.shortenRemoteDataSource, this.appDatabase);
 

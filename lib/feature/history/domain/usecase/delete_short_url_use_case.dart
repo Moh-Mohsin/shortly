@@ -6,7 +6,7 @@ import 'package:shortly/feature/shorten/data/repository/shorten_repository.dart'
 
 @injectable
 class DeleteShortUrlUseCase {
-  final ShortUrlHistoryRepository/*!*/ shortUrlHistoryRepository;
+  final ShortUrlHistoryRepository shortUrlHistoryRepository;
 
   DeleteShortUrlUseCase(this.shortUrlHistoryRepository);
 

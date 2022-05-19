@@ -5,7 +5,7 @@ class Dummy {
   static ShortUrl getShortUrl(String originalLink) {
     final shortenResponse = Dummy.getShortenResponse(originalLink);
     final int timestamp = 165413216;
-    return shortenResponse.result.mapToShortUrl(timestamp);
+    return shortenResponse.result!.mapToShortUrl(timestamp);
   }
 
   static ShortenResponse getShortenResponse(String originalLink) {
