@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
@@ -8,9 +9,9 @@ import 'package:shortly/data/network/response/shorten_response.dart';
 import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.dart';
 
 import '../../../../dummy.dart';
+import 'shorten_remote_data_source_test.mocks.dart';
 
-class MockShrtcodeApiService extends Mock implements ShrtcodeApiService {}
-
+@GenerateMocks([ShrtcodeApiService])
 void main() {
   late MockShrtcodeApiService mockShrtcodeApiService;
   late ShortenRemoteDataSourceImpl shortenRemoteDataSourceImpl;

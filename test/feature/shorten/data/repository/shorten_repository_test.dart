@@ -12,12 +12,8 @@ import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.d
 import '../../../../dummy.dart';
 import 'shorten_repository_test.mocks.dart';
 
-class MockShortenRemoteDataSource extends Mock
-    implements ShortenRemoteDataSource {}
 
-class MockAppDatabase extends Mock implements AppDatabase {}
-
-@GenerateMocks([ShortUrlDao])
+@GenerateMocks([ShortUrlDao, AppDatabase, ShortenRemoteDataSource])
 void main() {
   late MockShortenRemoteDataSource mockShortenRemoteDataSource;
   late MockAppDatabase mockAppDatabase;
