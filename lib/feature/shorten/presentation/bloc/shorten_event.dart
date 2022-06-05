@@ -9,5 +9,5 @@ abstract class ShortenEvent extends Equatable {
 
 class ShortenUrlEvent extends ShortenEvent {
   final String url;
-  ShortenUrlEvent({this.url});
+  ShortenUrlEvent({required this.url});
 }

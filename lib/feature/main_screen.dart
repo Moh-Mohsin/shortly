@@ -10,8 +10,8 @@ import 'package:shortly/util/shorty_colors.dart';
 
 class MainScreen extends StatelessWidget {
   static String routeName = 'MainScreen';
-  final shortenBloc = getIt<ShortenBloc>();
-  final shortUrlHistoryBloc = getIt<ShortUrlHistoryBloc>();
+  final ShortenBloc shortenBloc = getIt<ShortenBloc>();
+  final ShortUrlHistoryBloc shortUrlHistoryBloc = getIt<ShortUrlHistoryBloc>();
 
   @override
   Widget build(BuildContext context) {

@@ -1,0 +1,32 @@
+{
+  "editor.suggestSelection": "first",
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  // Remove .fvm files from search
+  "search.exclude": {
+    "**/.fvm": true,
+    "**/assets": true,
+    "**/assets/translations": false,
+  },
+  // Remove from file watching
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "spellright.language": [
+    "en"
+  ],
+  "spellright.documentTypes": [
+    "latex"
+  ],
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/cd_android.yml",
+    ".github/workflows/cd_ios.yml"
+  ],
+  "github-actions.workflows.pinned.refresh.enabled": true,
+  "github-actions.workflows.pinned.refresh.interval": 30,
+  "dart.lineLength": 80,
+  "[dart]": {
+    "editor.rulers": [
+      80
+    ],
+  }
+}

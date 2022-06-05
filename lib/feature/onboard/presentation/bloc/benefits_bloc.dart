@@ -13,16 +13,13 @@ part 'benefits_state.dart';
 class BenefitsBloc extends Bloc<BenefitsEvent, BenefitsState> {
   final SkipBenefitsUseCase _skipBenefitsUseCase;
 
-  BenefitsBloc(this._skipBenefitsUseCase) : super(BenefitsInitial());
+  BenefitsBloc(this._skipBenefitsUseCase) : super(BenefitsInitial()) {
+    on<SkipBenefitsEvent>(_handleSkip);
+  }
 
-  @override
-  Stream<BenefitsState> mapEventToState(
-    BenefitsEvent event,
-  ) async* {
-    if (event is SkipBenefitsEvent) {
-      _skipBenefitsUseCase();
-      yield BenefitsSkipped();
-    }
+  _handleSkip(SkipBenefitsEvent event, Emitter<BenefitsState> emit) {
+    _skipBenefitsUseCase();
+    emit(BenefitsSkipped());
   }
 
   skip() {

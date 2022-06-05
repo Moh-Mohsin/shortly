@@ -8,7 +8,7 @@ import 'benefit.dart';
 class BenefitItem extends StatelessWidget {
   final Benefit benefit;
 
-  const BenefitItem({Key key, @required this.benefit}) : super(key: key);
+  const BenefitItem({Key? key, required this.benefit}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class BenefitItem extends StatelessWidget {
                     Text(
                       benefit.title,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline5.copyWith(
+                      style: Theme.of(context).textTheme.headline5!.copyWith(
                           fontWeight: FontWeight.w900, color: Colors.black),
                     ),
                     SizedBox(
@@ -39,7 +39,7 @@ class BenefitItem extends StatelessWidget {
                     Text(
                       benefit.description,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                      style: Theme.of(context).textTheme.subtitle1!.copyWith(
                           fontWeight: FontWeight.w900, color: Colors.black),
                     )
                   ],

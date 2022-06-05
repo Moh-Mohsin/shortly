@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
 import 'package:shortly/data/result.dart';
@@ -6,12 +7,12 @@ import 'package:shortly/feature/shorten/domain/usecase/shorten_url_use_case.dart
 import 'package:shortly/feature/shorten/presentation/bloc/shorten_bloc.dart';
 
 import '../../../../dummy.dart';
+import 'shorten_bloc_test.mocks.dart';
 
-class MockShortenUrlUseCase extends Mock implements ShortenUrlUseCase {}
-
+@GenerateMocks([ShortenUrlUseCase])
 void main() {
-  ShortenBloc shortenBloc;
-  MockShortenUrlUseCase mockShortenUrlUseCase;
+  late ShortenBloc shortenBloc;
+  late MockShortenUrlUseCase mockShortenUrlUseCase;
 
   setUp(() {
     mockShortenUrlUseCase = MockShortenUrlUseCase();

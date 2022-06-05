@@ -14,8 +14,8 @@ class ShortUrlItem extends StatefulWidget {
   final ShortUrl shortUrl;
 
   const ShortUrlItem({
-    Key key,
-    @required this.shortUrl,
+    Key? key,
+    required this.shortUrl,
   }) : super(key: key);
 
   @override
@@ -23,7 +23,7 @@ class ShortUrlItem extends StatefulWidget {
 }
 
 class _ShortUrlItemState extends State<ShortUrlItem> {
-  ShortUrlHistoryBloc _shortUrlHistoryBloc;
+  late ShortUrlHistoryBloc _shortUrlHistoryBloc;
   bool _copied = false;
 
   @override
@@ -51,7 +51,7 @@ class _ShortUrlItemState extends State<ShortUrlItem> {
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText2
+                            .bodyText2!
                             .copyWith(fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -72,7 +72,7 @@ class _ShortUrlItemState extends State<ShortUrlItem> {
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Text(
                   widget.shortUrl.fullShortLink,
-                  style: Theme.of(context).textTheme.bodyText2.copyWith(
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
                       color: ShortyColors.primaryCyan,
                       fontWeight: FontWeight.w700),
                 ),
@@ -91,7 +91,7 @@ class _ShortUrlItemState extends State<ShortUrlItem> {
                   onPressed: () => _copyShortUrlToClipboard(widget.shortUrl),
                   child: Text(
                     _copied ? 'COPIED!' : 'COPY',
-                    style: Theme.of(context).textTheme.headline6.copyWith(
+                    style: Theme.of(context).textTheme.headline6!.copyWith(
                         fontWeight: FontWeight.w700, color: Colors.white),
                   ),
                 ),

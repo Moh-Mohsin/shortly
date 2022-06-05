@@ -16,9 +16,9 @@ class ShortUrlHistoryWidget extends StatefulWidget {
 }
 
 class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
-  ShortUrlHistoryBloc _shortUrlHistoryBloc;
-  List<ShortUrl> shortUrls;
-  StreamSubscription streamSubscription;
+  late ShortUrlHistoryBloc _shortUrlHistoryBloc;
+  List<ShortUrl>? shortUrls;
+  late StreamSubscription streamSubscription;
   @override
   void initState() {
     _shortUrlHistoryBloc = BlocProvider.of<ShortUrlHistoryBloc>(context);
@@ -42,16 +42,16 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
     }
     return Stack(
       children: [
-        shortUrls.isEmpty
+        shortUrls!.isEmpty
             ? _buildEmptyListWidget(context)
             : ListView.builder(
-                itemCount: shortUrls.length + 1,
+                itemCount: shortUrls!.length + 1,
                 itemBuilder: (context, index) => index == 0
                     ? Center(child: Text('Your Link History'))
                     : _buildListItem(index - 1, shortUrls ?? []),
               ),
         Visibility(
-          visible: shortUrls.isNotEmpty,
+          visible: shortUrls!.isNotEmpty,
           child: Positioned(
             bottom: 0.0,
             left: 0.0,
@@ -102,7 +102,7 @@ Widget _buildEmptyListWidget(BuildContext context) {
         "Let's get started!",
         style: Theme.of(context)
             .textTheme
-            .headline6
+            .headline6!
             .copyWith(fontWeight: FontWeight.w700),
       ),
       SizedBox(height: 8.0),

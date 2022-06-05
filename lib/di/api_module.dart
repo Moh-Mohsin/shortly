@@ -5,7 +5,6 @@ import 'package:shortly/data/network/api/shrtcode_api_service.dart';
 
 @module
 abstract class ApiModule {
-  @preResolve
   Dio getDio() {
     var dio = Dio();
      
@@ -20,7 +19,6 @@ abstract class ApiModule {
     return dio;
   }
 
-  @preResolve
   ShrtcodeApiService getShrtcodeApiService(Dio dio) {
     return ShrtcodeApiService(dio);
   }

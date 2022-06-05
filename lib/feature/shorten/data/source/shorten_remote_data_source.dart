@@ -26,9 +26,9 @@ class ShortenRemoteDataSourceImpl extends ShortenRemoteDataSource {
       print(dioError);
       print(dioError.response);
       print(dioError.error);
-      if (dioError.type == DioErrorType.RESPONSE) {
-        final errorCode = dioError.response.statusCode;
-        final errorMessage = dioError.response.statusMessage;
+      if (dioError.type == DioErrorType.response) {
+        final errorCode = dioError.response!.statusCode;
+        final errorMessage = dioError.response!.statusMessage;
         if (errorCode == 400) {
           throw BadRequestException();
         } else {

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:shortly/data/exceptions/exceptions.dart';
@@ -8,12 +9,12 @@ import 'package:shortly/data/network/response/shorten_response.dart';
 import 'package:shortly/feature/shorten/data/source/shorten_remote_data_source.dart';
 
 import '../../../../dummy.dart';
+import 'shorten_remote_data_source_test.mocks.dart';
 
-class MockShrtcodeApiService extends Mock implements ShrtcodeApiService {}
-
+@GenerateMocks([ShrtcodeApiService])
 void main() {
-  MockShrtcodeApiService mockShrtcodeApiService;
-  ShortenRemoteDataSourceImpl shortenRemoteDataSourceImpl;
+  late MockShrtcodeApiService mockShrtcodeApiService;
+  late ShortenRemoteDataSourceImpl shortenRemoteDataSourceImpl;
 
   setUp(() {
     mockShrtcodeApiService = MockShrtcodeApiService();
@@ -31,7 +32,9 @@ void main() {
           HttpResponse(
               dummyShortenResponse,
               Response(
-                  data: Dummy.getShortenRawResponse(link), statusCode: 200)));
+                  data: Dummy.getShortenRawResponse(link),
+                  statusCode: 200,
+                  requestOptions: RequestOptions(path: '/shorten'))));
       //when
       final result = await shortenRemoteDataSourceImpl.shortenUrl(link);
 
@@ -43,12 +46,15 @@ void main() {
     test('should throw a BadRequestException when the status code is 400',
         () async {
       //given
-      when(mockShrtcodeApiService.shorten(url: link)).thenAnswer((_) async =>
+      final options = RequestOptions(path: '');
+      when(mockShrtcodeApiService.shorten(url: link)).thenAnswer(((_) async =>
           throw DioError(
-              type: DioErrorType.RESPONSE,
+              type: DioErrorType.response,
               response: Response(
                   data: Dummy.getShortenRawErrorResponse(link),
-                  statusCode: 400)));
+                  statusCode: 400,
+                  requestOptions: options),
+              requestOptions: options)));
 
       //when
       final call = shortenRemoteDataSourceImpl.shortenUrl;

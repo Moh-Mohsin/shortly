@@ -6,14 +6,11 @@ part of 'shorten_response.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ShortenResponse _$ShortenResponseFromJson(Map<String, dynamic> json) {
-  return ShortenResponse(
-    ok: json['ok'] as bool,
-    result: json['result'] == null
-        ? null
-        : ShortenDto.fromJson(json['result'] as Map<String, dynamic>),
-  );
-}
+ShortenResponse _$ShortenResponseFromJson(Map<String, dynamic> json) =>
+    ShortenResponse(
+      ok: json['ok'] as bool,
+      result: ShortenDto.fromJson(json['result'] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$ShortenResponseToJson(ShortenResponse instance) =>
     <String, dynamic>{
@@ -21,18 +18,16 @@ Map<String, dynamic> _$ShortenResponseToJson(ShortenResponse instance) =>
       'result': instance.result,
     };
 
-ShortenDto _$ShortenDtoFromJson(Map<String, dynamic> json) {
-  return ShortenDto(
-    code: json['code'] as String,
-    shortLink: json['short_link'] as String,
-    fullShortLink: json['full_short_link'] as String,
-    shortLink2: json['short_link2'] as String,
-    fullShortLink2: json['full_short_link2'] as String,
-    shareLink: json['share_link'] as String,
-    fullShareLink: json['full_share_link'] as String,
-    originalLink: json['original_link'] as String,
-  );
-}
+ShortenDto _$ShortenDtoFromJson(Map<String, dynamic> json) => ShortenDto(
+      code: json['code'] as String,
+      shortLink: json['short_link'] as String,
+      fullShortLink: json['full_short_link'] as String,
+      shortLink2: json['short_link2'] as String,
+      fullShortLink2: json['full_short_link2'] as String,
+      shareLink: json['share_link'] as String,
+      fullShareLink: json['full_share_link'] as String,
+      originalLink: json['original_link'] as String,
+    );
 
 Map<String, dynamic> _$ShortenDtoToJson(ShortenDto instance) =>
     <String, dynamic>{
