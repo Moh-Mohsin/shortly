@@ -38,7 +38,7 @@ The app is built with BloC and divided by feature. The layers in each feature fr
 
 ### Run the app
 
-make sure you are using Flutter 2.0.5 SDK (or prior to 2.2.0) and run the command `flutter run`
+`flutter run`
 
 ### Run the tests
 
