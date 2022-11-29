@@ -22,13 +22,15 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
   @override
   void initState() {
     _shortUrlHistoryBloc = BlocProvider.of<ShortUrlHistoryBloc>(context);
-    streamSubscription = _shortUrlHistoryBloc.getHistoryListStream().listen((event) {
+    streamSubscription =
+        _shortUrlHistoryBloc.getHistoryListStream().listen((event) {
       setState(() {
         shortUrls = event;
       });
     });
     super.initState();
   }
+
   @override
   void dispose() {
     streamSubscription.cancel();
@@ -37,6 +39,7 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     if (shortUrls == null) {
       return Container();
     }
@@ -44,11 +47,14 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
       children: [
         shortUrls!.isEmpty
             ? _buildEmptyListWidget(context)
-            : ListView.builder(
-                itemCount: shortUrls!.length + 1,
-                itemBuilder: (context, index) => index == 0
-                    ? Center(child: Text('Your Link History'))
-                    : _buildListItem(index - 1, shortUrls ?? []),
+            : Container(
+                height: height,
+                child: ListView.builder(
+                  itemCount: shortUrls!.length + 1,
+                  itemBuilder: (context, index) => index == 0
+                      ? Center(child: Text('Your Link History'))
+                      : _buildListItem(index - 1, shortUrls ?? []),
+                ),
               ),
         Visibility(
           visible: shortUrls!.isNotEmpty,
@@ -59,7 +65,7 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
             child: Column(
               children: [
                 Container(
-                  height: 20,
+                  height: 40,
                   // color: ShortyColors.backgroundOffWhite,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
@@ -72,7 +78,7 @@ class _ShortUrlHistoryWidgetState extends State<ShortUrlHistoryWidget> {
                   )),
                 ),
                 Container(
-                  height: 20,
+                  height: 0,
                   color: ShortyColors.backgroundOffWhite,
                 ),
               ],

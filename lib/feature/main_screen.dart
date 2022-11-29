@@ -15,34 +15,31 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final padding = MediaQuery.of(context).padding;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: Container(
         color: ShortyColors.backgroundOffWhite,
-        child: SingleChildScrollView(
-          child: Stack(
-            children: [
-              Container(
-                height: height,
-                width: double.infinity,
-                padding: const EdgeInsets.only(bottom: 200.0),
-                child: BlocProvider.value(
-                  value: shortUrlHistoryBloc,
-                  child: ShortUrlHistoryWidget(),
-                ),
+        child: Stack(
+          children: [
+            Container(
+              height: height,
+              width: double.infinity,
+              padding: EdgeInsets.only(bottom: 200),
+              child: BlocProvider.value(
+                value: shortUrlHistoryBloc,
+                child: ShortUrlHistoryWidget(),
               ),
-              Positioned(
-                bottom: 0.0,
-                left: 0.0,
-                right: 0.0,
-                child: BlocProvider.value(
-                  value: shortenBloc,
-                  child: SizedBox(height: 200, child: ShortenWidget()),
-                ),
+            ),
+            Positioned(
+              bottom: 0.0,
+              left: 0.0,
+              right: 0.0,
+              child: BlocProvider.value(
+                value: shortenBloc,
+                child: SizedBox(height: 200, child: ShortenWidget()),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
